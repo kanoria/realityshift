@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "POVoiceHUD.h"
-@interface ViewController : UIViewController <POVoiceHUDDelegate>
+#import "Network.h"
+@interface ViewController : UIViewController <POVoiceHUDDelegate, NetworkDelegate>
 
 
 @end

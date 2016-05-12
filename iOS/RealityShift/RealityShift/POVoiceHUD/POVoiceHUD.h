@@ -55,7 +55,7 @@
 - (void)startForFilePath:(NSString *)filePath;
 - (void)commitRecording;
 
-@property (nonatomic, assign) id<POVoiceHUDDelegate> delegate;
+@property (nonatomic,  weak) id<POVoiceHUDDelegate> delegate;
 
 @end
 

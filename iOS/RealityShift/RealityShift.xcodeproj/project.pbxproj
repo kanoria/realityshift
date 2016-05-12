@@ -20,6 +20,7 @@
 		C92110711CE4334000EC829E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C92110701CE4334000EC829E /* QuartzCore.framework */; };
 		C92110771CE4337800EC829E /* microphone.png in Resources */ = {isa = PBXBuildFile; fileRef = C92110731CE4337800EC829E /* microphone.png */; };
 		C92110781CE4337800EC829E /* POVoiceHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C92110751CE4337800EC829E /* POVoiceHUD.m */; };
+		C921107B1CE51AF500EC829E /* Network.m in Sources */ = {isa = PBXBuildFile; fileRef = C921107A1CE51AF500EC829E /* Network.m */; };
 		E9D807DF6A3DE46CCC545C9F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 14FE342D758C2A9FC9C45A14 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +47,8 @@
 		C92110741CE4337800EC829E /* POVoiceHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = POVoiceHUD.h; sourceTree = "<group>"; };
 		C92110751CE4337800EC829E /* POVoiceHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = POVoiceHUD.m; sourceTree = "<group>"; };
 		C92110761CE4337800EC829E /* POVoiceHUDDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = POVoiceHUDDelegate.h; sourceTree = "<group>"; };
+		C92110791CE51AF500EC829E /* Network.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Network.h; sourceTree = "<group>"; };
+		C921107A1CE51AF500EC829E /* Network.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Network.m; sourceTree = "<group>"; };
 		F5B45210D165905F44DDED4C /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -116,6 +119,8 @@
 				C92110581CE4329B00EC829E /* Main.storyboard */,
 				C92110521CE4329B00EC829E /* AppDelegate.h */,
 				C92110531CE4329B00EC829E /* AppDelegate.m */,
+				C92110791CE51AF500EC829E /* Network.h */,
+				C921107A1CE51AF500EC829E /* Network.m */,
 				C921105B1CE4329B00EC829E /* Assets.xcassets */,
 				C921105D1CE4329B00EC829E /* LaunchScreen.storyboard */,
 				C92110601CE4329B00EC829E /* Info.plist */,
@@ -266,6 +271,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C92110571CE4329B00EC829E /* ViewController.m in Sources */,
+				C921107B1CE51AF500EC829E /* Network.m in Sources */,
 				C92110781CE4337800EC829E /* POVoiceHUD.m in Sources */,
 				C92110541CE4329B00EC829E /* AppDelegate.m in Sources */,
 				C92110511CE4329B00EC829E /* main.m in Sources */,

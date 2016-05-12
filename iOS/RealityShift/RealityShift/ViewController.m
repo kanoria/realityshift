@@ -24,6 +24,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [Network translate:@"hello"];
     
     piece = 0;
     
@@ -75,6 +76,14 @@
 
 }
 
+#pragma mark - Network Delegate
+
+- (void) didGetTranscribedData: (NSString *) text {
+    
+}
+- (void) didGetTranslatedData: (NSString *)text {
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
