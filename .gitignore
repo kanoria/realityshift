@@ -6,3 +6,4 @@
 .download_cache
 *.egg-info
 Pods
+*.lock
