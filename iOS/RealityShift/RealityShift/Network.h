@@ -20,7 +20,7 @@
 @interface Network : NSObject
 
 @property (nonatomic,  weak) id<NetworkDelegate> delegate;
-
+- (NSString*) hack: (NSString*) str;
 +(instancetype) shareInstance ; 
 - (void)translate:(NSString*) text;
 - (void) transcribe:(NSString*) path;

@@ -26,8 +26,10 @@
     [super viewDidLoad];
     
     [Network shareInstance].delegate = self;
-    [[Network shareInstance] translate:@"hello"];
-   // [[Network shareInstance] transcribe:@"/Users/Matt/Downloads/google-speech-v2-master/audio/test.wav"];
+    //[[Network shareInstance] translate:@"你好世界"];
+    //[[Network shareInstance] transcribe:@"/Users/Matt/Downloads/google-speech-v2-master/audio/test.wav"];
+    //[[Network shareInstance] transcribe:@"/Users/Matt/Projects/test.wav"];
+    //[[Network shareInstance] hack:@"t"] ;
     
     piece = 0;
     [_TranslateTextView setText:@""];
@@ -51,7 +53,6 @@
 #pragma mark - Actions
 
 - (void)RedTapped:(id)sender {
-    NSLog(@"RedTapped");
     [_RedImageView setHidden:true];
     [_GreenImageView setHidden:false];
     [self.voiceHud commitRecording];
@@ -60,7 +61,6 @@
 - (void)GreenTapped:(id)sender {
     [_GreenImageView setHidden:true];
     [_RedImageView setHidden:false];
-    NSLog(@"%@", NSHomeDirectory());
     [self.voiceHud startForFilePath:[NSString stringWithFormat:@"%@/Documents/%d.wav", NSHomeDirectory(), piece]];
 }
 
@@ -74,14 +74,13 @@
     NSLog(@"Sound recorded with file %@ for %.2f seconds", [recordPath lastPathComponent], recordLength);
     [_RedImageView setHidden:true];
     [_GreenImageView setHidden:false];
-    
-
+    [[Network shareInstance] transcribe:recordPath];
 }
 
 #pragma mark - Network Delegate
 
 - (void) didGetTranscribedData: (NSString *) text {
-    
+    [[Network shareInstance] translate:text];
 }
 
 

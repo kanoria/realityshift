@@ -43,9 +43,24 @@ static Network* _instance = nil;
     }];
     
 }
+
+- (NSString*) hack: (NSString*) str {
+    str = @"\"result\":[{\"alternative\":[{\"transcript\":\"what's the weather like\",";
+    NSRange r = [str rangeOfString:@"\"transcript\":\""];
+    int loc = r.length+ r.location;
+    //NSLog(@"%c", [str characterAtIndex:loc]);
+    NSRange limit = {loc, [str length] - loc-1};
+    NSRange end = [str rangeOfString:@"\"" options:NSLiteralSearch range:limit];
+    //NSLog(@"%c", [str characterAtIndex:end.location]);
+    NSRange answer = {limit.location, end.location - limit.location};
+    NSString* result = [str substringWithRange:answer];
+    //NSLog(@"%@", result);
+    return result;
+}
+
 - (void) transcribe:(NSString*) path {
 //    NSString* urlS = @"https://www.google.com/speech-api/v2/recognize";
-    NSString* urlS = @"https://www.google.com/speech-api/v2/recognize?output=json&lang=en-us&key=AIzaSyAyyNj4pWpKO0AcmoGT_DLd81vfzLRIqts";
+    NSString* urlS = @"https://www.google.com/speech-api/v2/recognize?output=json&lang=en&key=AIzaSyAyyNj4pWpKO0AcmoGT_DLd81vfzLRIqts";
     //AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     //manager.responseSerializer = [AFResponseSerializer serializer];
     NSData *data = [NSData dataWithContentsOfFile:path];
@@ -64,9 +79,11 @@ static Network* _instance = nil;
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     //operation.responseSerializer = [AFJSONResponseSerializer serializer];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"In Success");
-        NSString* newStr = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
-        NSLog(@"%@", newStr);
+        NSString* str = [[NSString alloc] initWithData:responseObject encoding:NSUTF8StringEncoding];
+        NSLog(@"Rough STR is: %@", str);
+        NSString* result = [self hack:str];
+        NSLog(@"Transcribed Text is: %@", result);
+        [self.delegate didGetTranscribedData:result];
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"In Fail");
@@ -80,5 +97,7 @@ static Network* _instance = nil;
      {"result":[{"alternative":[{"transcript":"what's the weather like","confidence":0.96594596},{"transcript":"was the weather like"},{"transcript":"what is the weather like"},{"transcript":"what's the weather like in"},{"transcript":"what was the weather like"}],"final":true}],"result_index":0}
     */
 }
+
+
 
 @end
