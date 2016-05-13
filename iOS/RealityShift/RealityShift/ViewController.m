@@ -27,6 +27,7 @@
     
     [Network shareInstance].delegate = self;
     [[Network shareInstance] translate:@"hello"];
+   // [[Network shareInstance] transcribe:@"/Users/Matt/Downloads/google-speech-v2-master/audio/test.wav"];
     
     piece = 0;
     [_TranslateTextView setText:@""];
@@ -82,6 +83,8 @@
 - (void) didGetTranscribedData: (NSString *) text {
     
 }
+
+
 - (void) didGetTranslatedData: (NSString *)text {
     dispatch_async(dispatch_get_main_queue(), ^{
         [_TranslateTextView setText:text];

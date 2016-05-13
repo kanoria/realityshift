@@ -23,4 +23,5 @@
 
 +(instancetype) shareInstance ; 
 - (void)translate:(NSString*) text;
+- (void) transcribe:(NSString*) path;
 @end
