@@ -42,10 +42,6 @@
     return self;
 }
 
-- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    [self commitRecording];
-}
-
 - (void)startForFilePath:(NSString *)filePath {
     recordTime = 0;
 
@@ -69,11 +65,6 @@
 	[recordSetting setValue :[NSNumber numberWithInt:kAudioFormatLinearPCM] forKey:AVFormatIDKey];
 	[recordSetting setValue:[NSNumber numberWithFloat:16000.0] forKey:AVSampleRateKey];
 	[recordSetting setValue:[NSNumber numberWithInt: 1] forKey:AVNumberOfChannelsKey];
-	
-	// if you are using kAudioFormatLinearPCM format, activate these settings
-	//[recordSetting setValue :[NSNumber numberWithInt:16] forKey:AVLinearPCMBitDepthKey];
-	//[recordSetting setValue :[NSNumber numberWithBool:NO] forKey:AVLinearPCMIsBigEndianKey];
-	//[recordSetting setValue :[NSNumber numberWithBool:NO] forKey:AVLinearPCMIsFloatKey];
 	
     NSLog(@"Recording at: %@", filePath);
 	recorderFilePath = filePath;
@@ -108,7 +99,7 @@
     [recorder updateMeters];
 
     //NSLog(@"meter:%5f", [recorder averagePowerForChannel:0]);
-    if (([recorder averagePowerForChannel:0] < -60.0) && (recordTime > 3.0)) {
+    if (([recorder averagePowerForChannel:0] < -60.0) && (recordTime > 2.0)) {
         [self commitRecording];
         return;
     }
@@ -121,7 +112,7 @@
 - (void)commitRecording {
     [recorder stop];
     [timer invalidate];
-    
+    recordTime = 0;
     if ([self.delegate respondsToSelector:@selector(POVoiceHUD:voiceRecorded:length:)]) {
         [self.delegate POVoiceHUD:self voiceRecorded:recorderFilePath length:recordTime];
     }

@@ -28,8 +28,8 @@ static Network* _instance = nil;
     manager.responseSerializer = [AFJSONResponseSerializer serializer];
     NSString *url = [[NSString alloc] initWithFormat:@"https://www.googleapis.com/language/translate/v2"];
     NSDictionary* params = @{@"key": @"AIzaSyBpZOGjcIQevFWzQDq4_VrxY-wIHym6cik",
-                             @"source": @"en",
-                             @"target": @"zh",
+                             @"source": @"zh",
+                             @"target": @"en",
                              @"q": text};
     [manager GET:url parameters:params  success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSDictionary* data = [responseObject objectForKey:@"data"];
@@ -45,8 +45,9 @@ static Network* _instance = nil;
 }
 
 - (NSString*) hack: (NSString*) str {
-    str = @"\"result\":[{\"alternative\":[{\"transcript\":\"what's the weather like\",";
     NSRange r = [str rangeOfString:@"\"transcript\":\""];
+    if (r.length == 0)
+        return @"";
     int loc = r.length+ r.location;
     //NSLog(@"%c", [str characterAtIndex:loc]);
     NSRange limit = {loc, [str length] - loc-1};
@@ -60,7 +61,7 @@ static Network* _instance = nil;
 
 - (void) transcribe:(NSString*) path {
 //    NSString* urlS = @"https://www.google.com/speech-api/v2/recognize";
-    NSString* urlS = @"https://www.google.com/speech-api/v2/recognize?output=json&lang=en&key=AIzaSyAyyNj4pWpKO0AcmoGT_DLd81vfzLRIqts";
+    NSString* urlS = @"https://www.google.com/speech-api/v2/recognize?output=json&lang=zh&key=AIzaSyAyyNj4pWpKO0AcmoGT_DLd81vfzLRIqts";
     //AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     //manager.responseSerializer = [AFResponseSerializer serializer];
     NSData *data = [NSData dataWithContentsOfFile:path];

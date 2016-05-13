@@ -11,6 +11,7 @@
 
 @interface ViewController () {
     int piece;
+    Boolean isStop;
 }
 
 @property (weak, nonatomic) IBOutlet UITextView *TranslateTextView;
@@ -32,6 +33,7 @@
     //[[Network shareInstance] hack:@"t"] ;
     
     piece = 0;
+    isStop = true;
     [_TranslateTextView setText:@""];
     
     self.voiceHud = [[POVoiceHUD alloc] init];
@@ -55,13 +57,19 @@
 - (void)RedTapped:(id)sender {
     [_RedImageView setHidden:true];
     [_GreenImageView setHidden:false];
+    isStop = true;
     [self.voiceHud commitRecording];
 }
 
 - (void)GreenTapped:(id)sender {
     [_GreenImageView setHidden:true];
     [_RedImageView setHidden:false];
+    isStop = false;
+    [self StartRecord];
+}
+- (void) StartRecord {
     [self.voiceHud startForFilePath:[NSString stringWithFormat:@"%@/Documents/%d.wav", NSHomeDirectory(), piece]];
+    piece += 1;
 }
 
 - (void) ClearButtonTapped:(id)sender {
@@ -72,21 +80,28 @@
 
 - (void)POVoiceHUD:(POVoiceHUD *)voiceHUD voiceRecorded:(NSString *)recordPath length:(float)recordLength {
     NSLog(@"Sound recorded with file %@ for %.2f seconds", [recordPath lastPathComponent], recordLength);
-    [_RedImageView setHidden:true];
-    [_GreenImageView setHidden:false];
     [[Network shareInstance] transcribe:recordPath];
+    if (!isStop) {
+        [self StartRecord];
+    }
 }
 
 #pragma mark - Network Delegate
 
 - (void) didGetTranscribedData: (NSString *) text {
+    if ([text  isEqual: @""]) {
+        
+        return;
+    }
     [[Network shareInstance] translate:text];
 }
 
 
 - (void) didGetTranslatedData: (NSString *)text {
     dispatch_async(dispatch_get_main_queue(), ^{
-        [_TranslateTextView setText:text];
+        NSString* currentText = [_TranslateTextView text];
+        NSString* newText = [[NSString alloc] initWithFormat:@"%@\n%@", currentText, text];
+        [_TranslateTextView setText:newText];
     });
     
 }
