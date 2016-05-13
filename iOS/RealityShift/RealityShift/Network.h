@@ -18,5 +18,9 @@
 
 
 @interface Network : NSObject
-+ (void)translate:(NSString*) text;
+
+@property (nonatomic,  weak) id<NetworkDelegate> delegate;
+
++(instancetype) shareInstance ; 
+- (void)translate:(NSString*) text;
 @end

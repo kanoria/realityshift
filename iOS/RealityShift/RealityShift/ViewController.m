@@ -24,10 +24,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [Network translate:@"hello"];
+    
+    [Network shareInstance].delegate = self;
+    [[Network shareInstance] translate:@"hello"];
     
     piece = 0;
-    
     [_TranslateTextView setText:@""];
     
     self.voiceHud = [[POVoiceHUD alloc] init];
@@ -82,6 +83,9 @@
     
 }
 - (void) didGetTranslatedData: (NSString *)text {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [_TranslateTextView setText:text];
+    });
     
 }
 - (void)didReceiveMemoryWarning {
