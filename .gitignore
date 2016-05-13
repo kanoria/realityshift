@@ -1,0 +1,9 @@
+.env
+*.swp
+*.swo
+*.pyc
+.DS_Store
+.download_cache
+*.egg-info
+Pods
+*.lock

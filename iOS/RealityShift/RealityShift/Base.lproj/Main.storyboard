@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="VkJ-FX-WnJ">
+                                <rect key="frame" x="0.0" y="20" width="600" height="402"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OqN-N0-wmD">
+                                <rect key="frame" x="278" y="550" width="45" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="3ru-Y1-5qV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <state key="normal" title="Clear"/>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="GreenPoint" translatesAutoresizingMaskIntoConstraints="NO" id="u0r-Kw-0aV">
+                                <rect key="frame" x="255" y="451" width="91" height="91"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="91" id="Qdi-dT-X6Y"/>
+                                    <constraint firstAttribute="width" secondItem="u0r-Kw-0aV" secondAttribute="height" multiplier="1:1" id="kiI-NQ-2Bt"/>
+                                    <constraint firstAttribute="width" constant="91" id="xt6-zj-5c0"/>
+                                </constraints>
+                            </imageView>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RedPoint" translatesAutoresizingMaskIntoConstraints="NO" id="n8G-D0-Qk2">
+                                <rect key="frame" x="255" y="451" width="91" height="91"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="91" id="2M8-gw-z7W"/>
+                                    <constraint firstAttribute="width" secondItem="n8G-D0-Qk2" secondAttribute="height" multiplier="1:1" id="Cum-6z-rNH"/>
+                                    <constraint firstAttribute="height" constant="91" id="jAh-dQ-1Bl"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="u0r-Kw-0aV" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Ijv-H3-zwF"/>
+                            <constraint firstItem="VkJ-FX-WnJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="KZf-7c-Xz5"/>
+                            <constraint firstItem="OqN-N0-wmD" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="OcB-gR-Nw0"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="OqN-N0-wmD" secondAttribute="bottom" constant="20" id="QIj-uA-6xk"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="u0r-Kw-0aV" secondAttribute="bottom" constant="58" id="Vo8-zF-nk6"/>
+                            <constraint firstItem="n8G-D0-Qk2" firstAttribute="leading" secondItem="u0r-Kw-0aV" secondAttribute="trailing" constant="-91" id="hAY-af-dyM"/>
+                            <constraint firstItem="u0r-Kw-0aV" firstAttribute="top" secondItem="VkJ-FX-WnJ" secondAttribute="bottom" constant="29" id="hc2-Lp-0WH"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="VkJ-FX-WnJ" secondAttribute="trailing" constant="-20" id="iz9-Az-PkI"/>
+                            <constraint firstItem="n8G-D0-Qk2" firstAttribute="top" secondItem="u0r-Kw-0aV" secondAttribute="bottom" constant="-91" id="rvP-6D-zXv"/>
+                            <constraint firstItem="n8G-D0-Qk2" firstAttribute="width" secondItem="n8G-D0-Qk2" secondAttribute="height" multiplier="1:1" id="ybv-WU-41b"/>
+                            <constraint firstItem="VkJ-FX-WnJ" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="zcg-1G-OEj"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="ClearButton" destination="OqN-N0-wmD" id="RRD-FV-Ua3"/>
+                        <outlet property="GreenImageView" destination="u0r-Kw-0aV" id="DWA-MJ-gD4"/>
+                        <outlet property="RedImageView" destination="n8G-D0-Qk2" id="UWd-s0-NBo"/>
+                        <outlet property="TranslateTextView" destination="VkJ-FX-WnJ" id="gCw-dp-Gng"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="305" y="375"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="GreenPoint" width="776" height="776"/>
+        <image name="RedPoint" width="776" height="776"/>
+    </resources>
+</document>

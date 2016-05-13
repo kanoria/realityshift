@@ -1,0 +1,5 @@
+
+AIzaSyBpZOGjcIQevFWzQDq4_VrxY-wIHym6cik
+
+
+Get https://www.googleapis.com/language/translate/v2?key=AIzaSyBpZOGjcIQevFWzQDq4_VrxY-wIHym6cik&source=en&target=zh&q=Hello
