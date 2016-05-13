@@ -98,8 +98,8 @@
 - (void)updateMeters {
     [recorder updateMeters];
 
-    //NSLog(@"meter:%5f", [recorder averagePowerForChannel:0]);
-    if (([recorder averagePowerForChannel:0] < -60.0) && (recordTime > 2.0)) {
+    NSLog(@"meter:%5f", [recorder averagePowerForChannel:0]);
+    if (([recorder averagePowerForChannel:0] < -40.0) && (recordTime > 2.0)) {
         [self commitRecording];
         return;
     }
@@ -112,7 +112,7 @@
 - (void)commitRecording {
     [recorder stop];
     [timer invalidate];
-    recordTime = 0;
+    NSLog(@"%f", recordTime);
     if ([self.delegate respondsToSelector:@selector(POVoiceHUD:voiceRecorded:length:)]) {
         [self.delegate POVoiceHUD:self voiceRecorded:recorderFilePath length:recordTime];
     }
