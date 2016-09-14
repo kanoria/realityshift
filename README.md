@@ -1,2 +1,6 @@
 # realityshift
-Cornell Tech Connective Media Specialisation Project
+Cornell Tech Specialisation Project
+
+Rishav Kanoria
+Francesco Perera
+He (Matt) Zhang
